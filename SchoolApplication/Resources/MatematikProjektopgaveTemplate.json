@@ -1,0 +1,21 @@
+{
+	"name": "Matematik Projektopgave",
+	"type": "main_folder",
+	"content": [
+		{
+			"name": "Dokumenter",
+			"type": "folder",
+			"content": []
+		},
+		{
+			"name": "Filer",
+			"type": "folder",
+			"content": []
+		},
+		{
+			"name": "",
+			"type": "file",
+			"template": ""
+		}
+	]
+}

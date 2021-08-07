@@ -29,6 +29,8 @@ namespace SchoolApplication {
 
 			SetSelectedButton(_pages[CurrentPage].PageButton, null);
 			SetPage();
+
+			TemplateCreator.Setup();
 		}
 
 		private void PageButtonClick(object sender, EventArgs e) {
