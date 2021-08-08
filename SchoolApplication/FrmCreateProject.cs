@@ -30,7 +30,7 @@ namespace SchoolApplication {
 
 		private void btnCreate_Click(object sender, EventArgs e) {
 			ProjectInfo projectInfo = new ProjectInfo(tbName.Text, new string[] { }, new string[] { }, new string[] { }, dtpDueDate.Value);
-			TemplateCreator.CreateProjectFromTemplate(_projectTemplate.TemplatePath, projectInfo);
+			TemplateCreator.CreateProject(_projectTemplate.TemplatePath, projectInfo);
 			this.Close();
 		}
 

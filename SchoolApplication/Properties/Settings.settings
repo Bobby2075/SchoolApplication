@@ -8,5 +8,11 @@
     <Setting Name="LastPage" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="DefaultStudent" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Karsten F. Pedersen</Value>
+    </Setting>
+    <Setting Name="DefaultStudentClass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3.Z</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

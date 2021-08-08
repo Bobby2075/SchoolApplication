@@ -42,5 +42,17 @@ namespace SchoolApplication {
 			}
 		}
 
+		private void btnAddTemplate_Click(object sender, EventArgs e) {
+			OpenFileDialog fileDialog = new OpenFileDialog();
+			DialogResult result = fileDialog.ShowDialog();
+			if (result == DialogResult.OK) {
+				string[] splitPath = fileDialog.FileName.Split('\\');
+				File.Copy(fileDialog.FileName, Path.Combine(TemplateCreator.TemplateFolderPath, splitPath[splitPath.Length - 1]));
+			}
+		}
+
+		private void btnDeleteTemplate_Click(object sender, EventArgs e) {
+
+		}
 	}
 }

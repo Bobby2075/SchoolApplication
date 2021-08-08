@@ -46,5 +46,29 @@ namespace SchoolApplication.Properties {
                 this["LastPage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Karsten F. Pedersen")]
+        public string DefaultStudent {
+            get {
+                return ((string)(this["DefaultStudent"]));
+            }
+            set {
+                this["DefaultStudent"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3.Z")]
+        public string DefaultStudentClass {
+            get {
+                return ((string)(this["DefaultStudentClass"]));
+            }
+            set {
+                this["DefaultStudentClass"] = value;
+            }
+        }
     }
 }
