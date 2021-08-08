@@ -20,7 +20,7 @@ namespace SchoolApplication {
 		}
 
 		public override string ToString() {
-			return "Name: " + Name + " Type: " + Type + " Content: " + Content + " Template: " + Template;
+			return "Name: " + Name + ", Type: " + Type + ", Content: " + Content + ", Template: " + Template;
 		}
 
 	}

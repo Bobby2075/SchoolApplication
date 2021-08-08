@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
-using System.Reflection;
-using Newtonsoft.Json;
 
 namespace SchoolApplication {
-	class TemplateCreator {
+	public class TemplateCreator {
 
 		public static string ProgramFolderName = "SchoolTemplates";
 		public static string TemplateFolderName = "Templates";
@@ -16,32 +11,41 @@ namespace SchoolApplication {
 		public static string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 		public static string DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 		public static string ProgramFolderPath = Path.Combine(AppDataPath, ProgramFolderName);
+		public static string TemplateFolderPath = Path.Combine(ProgramFolderPath, TemplateFolderName);
 		public static DirectoryInfo AppDataDirectory = new DirectoryInfo(AppDataPath);
 		public static DirectoryInfo DesktopDirectory = new DirectoryInfo(DesktopPath);
 
 		public static void Setup() {
 			CheckAppDataDirectory();
-			CreateProjectFromTemplate(Path.Combine(ProgramFolderPath, TemplateFolderName + "\\" + TestFile));
+
+			ProjectInfo projectInfo = new ProjectInfo("Matematik Projekt Test", "", new string[] { "word" }, new Teacher[] { new Teacher("Per", "PER") }, 
+				new Student[] { new Student("Karsten. F. Pedersen", "3.Z"), new Student("Tobias AMOGUS", "3.Z") }, new Subject[] { new Subject("Matematik", "A") }, DateTime.Now, DateTime.Now);
+			CreateProjectFromTemplate(Path.Combine(ProgramFolderPath, TemplateFolderName + "\\" + TestFile), projectInfo);
 		}
 
 		public static void CheckAppDataDirectory() {
 			CreateDirectory(ProgramFolderPath);
 		}
 
-		public static void CreateProjectFromTemplate(string path) {
+		public static string CreateProjectFromTemplate(string path, ProjectInfo projectInfo) {
 			try {
 				string json;
 				using (StreamReader reader = new StreamReader(path)) {
 					json = reader.ReadToEnd();
 				}
-
+				
 				TemplateFile template = JsonConvert.DeserializeObject<TemplateFile>(json);
 				string projectPath = Path.Combine(DesktopPath, template.Name);
 
 				CreateTemplateFileContent(template, projectPath);
+				projectInfo.CreateProjectInfoFile(projectPath);
+
+				return projectPath;
 			} catch (Exception e) {
 				Console.WriteLine(e.Message);
 			}
+
+			return "";
 		}
 
 		private static void CreateTemplateFileContent(TemplateFile file, string filePath) {
@@ -51,11 +55,8 @@ namespace SchoolApplication {
 				TemplateFile newFile = file.Content[i];
 				string newFilePath = Path.Combine(filePath, newFile.Name);
 
-				Console.WriteLine("1: " + newFile.ToString());
-				Console.WriteLine("2: " + newFilePath);
-
 				if (newFile.Template != "") {
-					// COPY TEMPLATE FILE
+					File.Copy(Path.Combine(newFile.Template, newFile.Name), newFilePath);
 				} else if (newFile.Type == "folder") {
 					CreateTemplateFileContent(newFile, newFilePath);
 					Console.WriteLine("3: Created folder : " + newFile.Name + " in " + file.Name);

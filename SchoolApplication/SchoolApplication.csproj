@@ -101,9 +101,17 @@
       <DependentUpon>FrmTemplates.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectInfo.cs" />
+    <Compile Include="ProjectTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateCreator.cs" />
     <Compile Include="TemplateFile.cs" />
+    <Compile Include="UserControlTemplateItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlTemplateItem.Designer.cs">
+      <DependentUpon>UserControlTemplateItem.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmDashboard.resx">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +137,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControlTemplateItem.resx">
+      <DependentUpon>UserControlTemplateItem.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
