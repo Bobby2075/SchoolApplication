@@ -11,20 +11,25 @@ using System.Windows.Forms;
 namespace SchoolApplication {
 	public partial class UserControlTemplateItem : UserControl {
 
-		public new string Name;
-		public string Path;
+		public ProjectTemplate ProjectTemplate;
 
 		public UserControlTemplateItem() {
 			InitializeComponent();
 		}
 
-		public void SetTemplate(string name, string path) {
-			Name = name;
-			Path = path;
+		public void SetTemplate(ProjectTemplate projectTemplate) {
+			ProjectTemplate = projectTemplate;
+			lblTitle.Text = ProjectTemplate.Name;
 		}
 
-		private void SelectTemplateClick(object sender, EventArgs e) {
-			Console.WriteLine("Amongus");
+		private void CreateTemplateClick(object sender, EventArgs e) {
+			CreateTemplate();
+		}
+
+		private void CreateTemplate() {
+			FrmCreateProject projectDialog = new FrmCreateProject();
+			projectDialog.SetTemplate(ProjectTemplate);
+			projectDialog.Show();
 		}
 
 	}

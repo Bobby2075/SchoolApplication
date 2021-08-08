@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmCreateProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateProject.Designer.cs">
+      <DependentUpon>FrmCreateProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     <Compile Include="UserControlTemplateItem.Designer.cs">
       <DependentUpon>UserControlTemplateItem.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FrmCreateProject.resx">
+      <DependentUpon>FrmCreateProject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDashboard.resx">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
     </EmbeddedResource>

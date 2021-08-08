@@ -9,22 +9,18 @@ namespace SchoolApplication {
 	public class ProjectInfo {
 
 		public string Name { get; private set; }
-		public string Description { get; private set; }
-		public string[] SearchTags { get; private set; }
-		public Teacher[] Teachers { get; private set; }
-		public Student[] Students { get; private set; }
-		public Subject[] Subjects { get; private set; }
+		public string[] Teachers { get; private set; }
+		public string[] Students { get; private set; }
+		public string[] Subjects { get; private set; }
 		public DateTime CreationDate { get; private set; }
 		public DateTime DueDate { get; private set; }
 
-		public ProjectInfo(string name, string description, string[] searchTags, Teacher[] teachers, Student[] students, Subject[] subjects, DateTime creationDate, DateTime dueDate) {
+		public ProjectInfo(string name, string[] teachers, string[] students, string[] subjects, DateTime dueDate) {
 			Name = name;
-			Description = description;
-			SearchTags = searchTags;
 			Teachers = teachers;
 			Students = students;
 			Subjects = subjects;
-			CreationDate = creationDate;
+			CreationDate = DateTime.Now;
 			DueDate = dueDate;
 		}
 
@@ -34,22 +30,7 @@ namespace SchoolApplication {
 			using (StreamWriter sw = File.CreateText(filePath)) {
 				sw.WriteLine("::::: Projekt Information :::::");
 				sw.WriteLine("Projekt navn: " + Name);
-				sw.WriteLine("Beskrivelse: " + Description);
-				string searchTags = "";
-				foreach (string tag in SearchTags) {
-					searchTags += tag + ", ";
-				}
-				sw.WriteLine("Søgeord: " + searchTags);
-				string teacherString = "";
-				for (int i = 0; i < Teachers.Length; i++) {
-					if (i == 0)
-						teacherString += Teachers[i].Name + " (" + Teachers[i].Initials + ")";
-					else if (i == Teachers.Length - 1)
-						teacherString += " og " + Teachers[i].Name + " (" + Teachers[i].Initials + ")";
-					else
-						teacherString += ", " + Teachers[i].Name + " (" + Teachers[i].Initials + ")";
-				}
-				sw.WriteLine("Lægerer: " + teacherString);
+				/*sw.WriteLine("Vejledere: " + Teachers);
 				string studentString = "";
 				for (int i = 0; i < Students.Length; i++) {
 					if (i == 0)
@@ -69,7 +50,7 @@ namespace SchoolApplication {
 					else
 						subjectString += ", " + Students[i].Name;
 				}
-				sw.WriteLine("Fag: " + subjectString);
+				sw.WriteLine("Fag: " + subjectString);*/
 				sw.WriteLine("Oprettelsesdato: " + CreationDate.ToString());
 				sw.WriteLine("Afleveringsdato: " + DueDate.ToString());
 

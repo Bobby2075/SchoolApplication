@@ -7,7 +7,7 @@ namespace SchoolApplication {
 
 		public static string ProgramFolderName = "SchoolTemplates";
 		public static string TemplateFolderName = "Templates";
-		public static string TestFile = "MatematikProjektopgaveTemplate.json";
+		public static string TestFile = "Matematik Projektopgave.json";
 		public static string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 		public static string DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 		public static string ProgramFolderPath = Path.Combine(AppDataPath, ProgramFolderName);
@@ -16,11 +16,11 @@ namespace SchoolApplication {
 		public static DirectoryInfo DesktopDirectory = new DirectoryInfo(DesktopPath);
 
 		public static void Setup() {
-			CheckAppDataDirectory();
+			/*CheckAppDataDirectory();
 
 			ProjectInfo projectInfo = new ProjectInfo("Matematik Projekt Test", "", new string[] { "word" }, new Teacher[] { new Teacher("Per", "PER") }, 
 				new Student[] { new Student("Karsten. F. Pedersen", "3.Z"), new Student("Tobias AMOGUS", "3.Z") }, new Subject[] { new Subject("Matematik", "A") }, DateTime.Now, DateTime.Now);
-			CreateProjectFromTemplate(Path.Combine(ProgramFolderPath, TemplateFolderName + "\\" + TestFile), projectInfo);
+			CreateProjectFromTemplate(Path.Combine(ProgramFolderPath, TemplateFolderName + "\\" + TestFile), projectInfo);*/
 		}
 
 		public static void CheckAppDataDirectory() {
