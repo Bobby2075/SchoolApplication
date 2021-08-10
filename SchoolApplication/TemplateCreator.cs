@@ -14,6 +14,7 @@ namespace SchoolApplication {
 		public static readonly string TemplateFolderPath = Path.Combine(ProgramFolderPath, TemplateFolderName);
 		public static readonly DirectoryInfo AppDataDirectory = new DirectoryInfo(AppDataPath);
 		public static readonly DirectoryInfo DesktopDirectory = new DirectoryInfo(DesktopPath);
+		public static readonly string[] FilePaths = Directory.GetFiles(TemplateFolderPath, "*.json");
 
 		public static void CreateProject(string destPath, ProjectInfo projectInfo) {
 			try {

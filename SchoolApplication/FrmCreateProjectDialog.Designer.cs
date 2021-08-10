@@ -1,6 +1,6 @@
 ﻿
 namespace SchoolApplication {
-	partial class FrmCreateProject {
+	partial class FrmCreateProjectDialog {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>

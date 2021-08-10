@@ -14,9 +14,6 @@ namespace SchoolApplication {
 		public PageIndex CurrentPage { get; private set; }
 		private readonly Dictionary<PageIndex, PageData> _pages = new Dictionary<PageIndex, PageData>();
 
-		/// <summary>
-		/// Constructor
-		/// </summary>
 		public FrmMain() {
 			InitializeComponent();
 
@@ -33,11 +30,6 @@ namespace SchoolApplication {
 			SetPage();
 		}
 
-		/// <summary>
-		/// Method used by page button to change pages.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
 		private void PageButtonClick(object sender, EventArgs e) {
 			foreach (PageData pageData in _pages.Values) {
 				if (pageData.PageButton == sender)
@@ -45,10 +37,6 @@ namespace SchoolApplication {
 			}
 		}
 
-		/// <summary>
-		/// Used to start switching a page.
-		/// </summary>
-		/// <param name="newPage"></param>
 		public void SwitchPage(PageIndex newPage) {
 			if (CurrentPage == newPage)
 				return;
@@ -63,9 +51,6 @@ namespace SchoolApplication {
 			Properties.Settings.Default.Save();
 		}
 
-		/// <summary>
-		/// Sets the page and changes data to match the new page.
-		/// </summary>
 		private void SetPage() {
 			PageData pageData = _pages[CurrentPage];
 			lblPageTitle.Text = pageData.Title;
@@ -74,11 +59,6 @@ namespace SchoolApplication {
 			pageData.Form.Show();
 		}
 
-		/// <summary>
-		/// Sets the selected page button.
-		/// </summary>
-		/// <param name="newButton"></param>
-		/// <param name="lastButton"></param>
 		private void SetSelectedButton(Button newButton, Button lastButton) {
 			pnlMenuButtonSelection.Height = newButton.Height;
 			pnlMenuButtonSelection.Top = newButton.Top;
@@ -94,8 +74,9 @@ namespace SchoolApplication {
 	public enum PageIndex {
 		Dashboard,
 		Templates,
-		Shortcuts,
 		Settings,
+		Shortcuts,
+		
 		Height,
 	}
 

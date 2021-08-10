@@ -21,20 +21,20 @@ namespace SchoolApplication {
 
 		private void LoadTemplates() {
 			pnlTemplates.Controls.Clear();
-			string[] filePaths = Directory.GetFiles(TemplateCreator.TemplateFolderPath, "*.json");
-			foreach (string filePath in filePaths) {
-				UserControlTemplateItem templateItem = new UserControlTemplateItem { Dock = DockStyle.Fill };
 
+			foreach (string filePath in TemplateCreator.FilePaths) {
+				
 				string[] splitPath = filePath.Split('\\');
 				string fileName = splitPath[splitPath.Length - 1];
 				fileName = fileName.Split('.')[0];
 
+				TemplateListItem templateItem = new TemplateListItem { Dock = DockStyle.Fill };
 				templateItem.SetTemplate(new ProjectTemplate(fileName, filePath));
 
 				Panel panel = new Panel() {
 					Dock = DockStyle.Top,
 					Height = templateItem.Height,
-					Padding = new Padding(10, 10, 10, 0)
+					Padding = new Padding(16, 10, 16, 0)
 				};
 
 				panel.Controls.Add(templateItem);
@@ -43,11 +43,14 @@ namespace SchoolApplication {
 		}
 
 		private void btnAddTemplate_Click(object sender, EventArgs e) {
-			OpenFileDialog fileDialog = new OpenFileDialog();
-			DialogResult result = fileDialog.ShowDialog();
-			if (result == DialogResult.OK) {
-				string[] splitPath = fileDialog.FileName.Split('\\');
-				File.Copy(fileDialog.FileName, Path.Combine(TemplateCreator.TemplateFolderPath, splitPath[splitPath.Length - 1]));
+			using (OpenFileDialog fileDialog = new OpenFileDialog()) {
+				if (fileDialog.ShowDialog() == DialogResult.OK) {
+					string[] splitPath = fileDialog.FileName.Split('\\');
+					File.Copy(fileDialog.FileName, Path.Combine(TemplateCreator.TemplateFolderPath, splitPath[splitPath.Length - 1]));
+
+					// DO SO NEW TEMPLATE IS ADDED TO PATH ARRAY
+					LoadTemplates();
+				}
 			}
 		}
 

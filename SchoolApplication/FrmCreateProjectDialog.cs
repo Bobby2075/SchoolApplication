@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SchoolApplication {
-	public partial class FrmCreateProject : Form {
+	public partial class FrmCreateProjectDialog : Form {
 
 		private ProjectTemplate _projectTemplate;
 
-		public FrmCreateProject() {
+		public FrmCreateProjectDialog() {
 			InitializeComponent();
 		}
 
